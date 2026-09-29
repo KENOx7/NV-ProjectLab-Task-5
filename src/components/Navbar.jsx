@@ -14,7 +14,7 @@ function Navbar(){
   const isOpen = openPath === pathname
 
   return(
-    <header className="relative z-20 border-b border-white/10 bg-black/90 backdrop-blur-md sm:absolute sm:left-0 sm:right-0 sm:top-0 sm:bg-black/30">
+    <header className="relative z-20 bg-black/90 backdrop-blur-md sm:absolute sm:left-0 sm:right-0 sm:top-0 sm:bg-black/30">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8">
         <NavLink to="/" className="flex items-center gap-2 text-xl font-extrabold tracking-wide">
           Keno<span className="text-cinema">Film</span>
@@ -26,15 +26,15 @@ function Navbar(){
             </NavLink>
           ))}
         </div>
-        <button type="button" onClick={()=>setOpenPath(isOpen ? null : pathname)} className="rounded-lg p-2 sm:hidden" aria-label="Open menu">
+        <button type="button" onClick={()=>setOpenPath(isOpen ? null : pathname)} className="p-2 outline-none sm:hidden" aria-label="Open menu">
           {isOpen ? <X /> : <Menu />}
         </button>
       </nav>
       {isOpen&&(
-        <div className="border-t border-white/10 px-4 pb-4 pt-3 sm:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col gap-1 rounded-2xl border border-white/10 bg-zinc-950 p-3">
+        <div className="bg-zinc-950 sm:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col">
             {links.map((link)=>(<NavLink key={link.path} to={link.path} onClick={()=>setOpenPath(null)}
-              className={({isActive})=>`rounded-xl px-4 py-3 text-sm 
+              className={({isActive})=>`px-5 py-4 text-sm 
               ${isActive ? 'bg-cinema text-white' : 'text-zinc-300 hover:bg-zinc-900'}`}>
               {link.name}
             </NavLink>))}
